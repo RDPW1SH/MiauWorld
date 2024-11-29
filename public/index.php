@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiauWorld</title>
-</head>
-<body>
-    <h2>Bem vindo</h2>
-</body>
-</html>
+<?php
+
+    $routes = require_once '../app/routes/routes.php';
+
+    $route = trim($_SERVER['REQUEST_URI'], '/');
+
+    if(array_key_exists($route, $routes)) {
+        $controllerName = $routes[$route]['controller'];
+        $actionName = $routes[$route]['action'];
+
+        require_once '../app/controllers/' . $controllerName . '.php';
+
+        $controller = new $controllerName;
+        $controller->$actionName();
+    } else {
+        http_response_code(404);
+        echo 'Pagina não encontrada';
+    }
+?>
