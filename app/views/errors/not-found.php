@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['redirect'])) {
 </head>
 <body>
     <h1>Não conseguimos encontrar a página que procura</h1>
-    <form action="" method="POST">
+    <form action="home.php" method="POST">
         <button type="submit" name="redirect">Voltar à página inicial</button>
     </form>
 </body>
