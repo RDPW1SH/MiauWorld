@@ -6,5 +6,6 @@ return [
         'controller' => 'HomeController',
         'action' => 'index'
     ],
+    
 ]
 ?>
