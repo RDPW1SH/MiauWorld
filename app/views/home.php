@@ -10,10 +10,12 @@
 
 <body>
 
-    <?php include  '../app/shared/components/nav/navbar.php' ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/MiauWorld/app/shared/components/nav/navbar.php'; ?>
     <h1>Bem vindo ao nosso site</h1>
-    <?php include  '../app/shared/components/footer/footer.php' ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/MiauWorld/app/shared/components/footer/footer.php'; ?>
 
 </body>
 
 </html>
+
+
