@@ -10,9 +10,9 @@
 
 <body>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/shared/components/nav/navbar.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . './app/shared/components/nav/navbar.php'; ?>
     <h1>Bem vindo ao nosso site</h1>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/app/shared/components/footer/footer.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . './app/shared/components/footer/footer.php'; ?>
 
 </body>
 
