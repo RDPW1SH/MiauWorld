@@ -5,7 +5,7 @@ Repositório para o projeto da disciplina Programação Web 2
 
 ## Descrição 🖋️
 
-O nosso projeto tem como objetivo mostrar imagens e gifs de milhares de gatos por todo o mundo com a ajuda da API "CaTassS". 
+O nosso projeto tem como objetivo mostrar imagens e gifs de milhares de gatos por todo o mundo com a ajuda da API "CaTaaS". 
 
 O nosso projeto encontrasse alojado na plataforma de alojamento [InfinityFree](miauworld.great-site.net) 😺
 
