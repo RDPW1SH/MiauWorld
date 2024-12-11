@@ -1,6 +1,6 @@
 <?php
 
-    $routes = require_once '../app/routes/routes.php';
+    $routes = require_once './app/routes/routes.php';
 
     $route = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
     
@@ -10,7 +10,7 @@
         
         $actionName = $routes[$route]['action'];
 
-        require_once '../app/controllers/' . $controllerName . '.php';
+        require_once './app/controllers/' . $controllerName . '.php';
 
         $controller = new $controllerName;
         $controller->$actionName();
