@@ -12,8 +12,14 @@ body {
     background-color: blue;
 }
 .login-card {
-    background-color: aqua;
+    background-color: white;
+    min-width: 380px;
+    min-height: 295px;
+    width: 450px;
+    height: 365px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    box-shadow: 3px 3px 9px black;
+    gap: 10px;
     padding: 20px;
 }
