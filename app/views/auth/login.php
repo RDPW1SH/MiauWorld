@@ -30,19 +30,27 @@ if(isset($_POST['auth-btn'])) {
     <link rel="stylesheet" href='./app/css/auth.css'>
     <title>MiauWorld - Login</title>
 </head>
-<main class="container">
-    <form class="login-card" action="" method="post">
-        <label for="email">Email</label>
-        <input type="email" name="email" placeholder="Escreva o seu email" required>
-        <label for="password">Email</label>
-        <input type="password" name="password" placeholder="Escreva a sua password" required>
-        <p>Não tem conta?<a href="./register.php">Registe-se</a></p>
-        <button class="auth-btn" type="submit">Login</button>
-    </form>
-</main>
+
 
 <body>
-
+<main class="container">
+    <form class="login-card" action="" method="post">
+        <h1>Login</h1>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Escreva o seu email" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Escreva a sua password" required>
+        <div class="links">
+            <p>Não tem conta? <a href="./register.php">Registe-se</a></p>
+        </div>
+        <div class="placement">
+            <button class="auth-btn" type="submit">Login</button>
+        </div>
+       
+    </form>
+</main>
 </body>
-
+<style>
+   
+</style>
 </html>

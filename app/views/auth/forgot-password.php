@@ -39,17 +39,20 @@ if(isset($_POST['auth-btn'])) {
     <link rel="stylesheet" href='./app/css/auth.css'>
     <title>MiauWorld - Forgot Password</title>
 </head>
+
+
+<body>
 <main class="container">
     <form class="login-card" action="" method="post">
         <h1>Esqueçeu-se da sua passe? diga-nos o seu email e nós enviaremos um email de recuperação</h1>
         <input type="email" name="email" placeholder="Escreva o seu email" required>
-        <button class="auth-btn" type="submit">Receber email</button>
-        <p>Lembrou-se da sua passe? tente fazer <a href="./login.php">Login</a></p>
+        <div class="links">
+            <p>Lembrou-se da sua passe? tente fazer <a href="./login.php">Login</a></p>
+        </div>
+        <div class="placement">
+            <button class="auth-btn" type="submit">Receber email</button>
+        </div>
     </form>
 </main>
-
-<body>
-
 </body>
-
 </html>

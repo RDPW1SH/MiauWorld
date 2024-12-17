@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100vw;
     height: 100vh;
 }
@@ -15,11 +16,41 @@ body {
     background-color: white;
     min-width: 380px;
     min-height: 295px;
-    width: 450px;
+    width: 430px;
     height: 365px;
     display: flex;
     flex-direction: column;
-    box-shadow: 3px 3px 9px black;
+    box-shadow: 4px 4px 17px black;
     gap: 10px;
     padding: 20px;
+    justify-content: space-around;
+}
+.links {
+    text-align: center;
+}
+input {
+    padding: 8px 12px;
+}
+a {
+    text-decoration: none;
+    color: green;
+}
+h1 {
+    text-align: center;
+}
+.placement {
+    text-align: center;
+}
+.auth-btn {
+    width: 80%;
+    font-weight: 600;
+    padding: 10px;
+    font-size: large;
+    background-color: orange;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+.auth-btn:hover {
+    background-color: orangered;
 }
