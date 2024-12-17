@@ -44,7 +44,11 @@ if(isset($_POST['auth-btn'])) {
 <body>
 <main class="container">
     <form class="login-card" action="" method="post">
-        <h1>Esqueçeu-se da sua passe? diga-nos o seu email e nós enviaremos um email de recuperação</h1>
+        <div>
+            <h1>Esqueçeu-se da sua passe?</h1>
+            <p>diga-nos o seu email e nós enviaremos um email de recuperação</p>  
+        </div>
+        
         <input type="email" name="email" placeholder="Escreva o seu email" required>
         <div class="links">
             <p>Lembrou-se da sua passe? tente fazer <a href="./login.php">Login</a></p>
