@@ -1,10 +1,7 @@
 RewriteEngine On
 
-# Permitir arquivos estáticos (CSS, JS, imagens)
-RewriteCond %{REQUEST_URI} \.(css|js|png|jpg|jpeg|gif|ico|woff|woff2|ttf|svg|eot)$ [NC]
-RewriteRule ^ - [L]
 
 # Redirecionar apenas requisições dinâmicas para index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteRule ^(.*)$ ./index.php [QSA,L]
