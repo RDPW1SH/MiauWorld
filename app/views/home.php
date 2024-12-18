@@ -15,7 +15,15 @@
     <?php include './app/shared/components/footer/footer.php'; ?>
 
 </body>
+<style>
+    body, html {
+    margin: 0;
 
+}
+h1 {
+    color: aquamarine;
+}
+</style>
 </html>
 
 
