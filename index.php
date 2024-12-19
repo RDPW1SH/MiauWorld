@@ -2,9 +2,6 @@
 
 // Permitir acesso a arquivos estáticos diretamente
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-if (file_exists(__DIR__ . $path) && is_file(__DIR__ . $path)) {
-    return false; // Deixa o Apache servir o arquivo diretamente
-}
 
 $routes = require_once './app/routes/routes.php';
 
