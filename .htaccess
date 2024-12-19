@@ -1,14 +1,21 @@
 RewriteEngine On
 
-# Redirecionar apenas requisições dinâmicas para index.php
+# Redirecionar para HTTPS (recomendado para maior segurança)
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.\*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Permitir acesso direto a arquivos e diretórios existentes
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.\*)$ index.php [QSA,L]
 
-# Deny db acess
+# Redirecionar todas as outras requisições para index.php (roteador principal)
+
+RewriteRule ^(.\*)$ /index.php [QSA,L]
+
+# Proteger o arquivo config.php
 
 <Files "config.php">
-Order Allow,Deny
-Deny from all
+Require all denied
 </Files>
