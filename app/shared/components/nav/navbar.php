@@ -11,12 +11,12 @@
             </a>
             <p>MiauWorld</p>
         </div>
-        <form action='/auth/login' method='GET'>
+        <form action='/auth/login' method='POST'>
             <div style='display: flex; gap: 10px; align-items: center;'>
                 <?php if (isset($_SESSION['auth']) && !empty($_SESSION['auth'])) {
                     echo ("<a href='./user/profile.php'>Bem Vindo</button>");
                 } else {
-                    echo ("<a href='/views/auth/login'><button type='submit' class='auth-btn' name='login_btn'>Login</button></a>");
+                    echo ("<button type='submit' class='auth-btn'>Login</button>");
                 } ?>
             </div>
         </form>

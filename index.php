@@ -13,10 +13,13 @@ $route = trim($path, '/');
 // Roteamento MVC
 if (array_key_exists($route, $routes)) {
 
-    
+
     $controllerName = $routes[$route]['controller'];
     $actionName = $routes[$route]['action'];
-    
+
+    var_dump($controllerName);
+    var_dump($actionName);
+
     require_once './app/controllers/' . $controllerName . '.php';
 
     $controller = new $controllerName;
