@@ -1,10 +1,5 @@
 RewriteEngine On
 
-# Redirecionar para HTTPS (recomendado para maior segurança)
-
-RewriteCond %{HTTPS} off
-RewriteRule ^(.\*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-
 # Permitir acesso direto a arquivos e diretórios existentes
 
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -12,7 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Redirecionar todas as outras requisições para index.php (roteador principal)
 
-RewriteRule ^(.\*)$ /index.php [QSA,L]
+RewriteRule ^(.\*)$ ./index.php [QSA,L]
 
 # Proteger o arquivo config.php
 
