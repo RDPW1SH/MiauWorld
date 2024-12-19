@@ -1,16 +1,6 @@
 RewriteEngine On
 
-# Permitir acesso direto a arquivos e diretórios existentes
-
+# Redirecionar tudo para index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# Redirecionar todas as outras requisições para index.php (roteador principal)
-
-RewriteRule ^(.\*)$ ./index.php [QSA,L]
-
-# Proteger o arquivo config.php
-
-<Files "config.php">
-Require all denied
-</Files>
+RewriteRule ^(.*)$ /index.php [L]
