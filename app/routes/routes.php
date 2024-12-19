@@ -26,6 +26,5 @@ return [
         'controller' => 'PesquisaController',
         'action' => 'index'
     ],
-    7
 ]
 ?>
