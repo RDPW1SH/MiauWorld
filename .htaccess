@@ -1,7 +1,14 @@
 RewriteEngine On
 
-
 # Redirecionar apenas requisições dinâmicas para index.php
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ ./index.php [QSA,L]
+RewriteRule ^(.\*)$ ./index.php [QSA,L]
+
+# Deny db acess
+
+<Files "./config.php">
+Order Allow,Deny
+Deny from all
+</Files>
