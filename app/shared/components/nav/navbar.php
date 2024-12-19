@@ -11,7 +11,7 @@
             </a>
             <p>MiauWorld</p>
         </div>
-        <form action='/pesquisar/pesquisar.php' method='GET'>
+        <form action='/auth/login' method='GET'>
             <div style='display: flex; gap: 10px; align-items: center;'>
                 <?php if (isset($_SESSION['auth']) && !empty($_SESSION['auth'])) {
                     echo ("<a href='./user/profile.php'>Bem Vindo</button>");
