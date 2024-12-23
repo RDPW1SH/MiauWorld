@@ -25,6 +25,9 @@ if (array_key_exists($route, $routes)) {
     exit;
 } else {
     http_response_code(404);
-    header('Location: /errors/not-found.php');
+
+    require_once './app/controllers/ErrorController.php';
+    $controller = new ErrorController();
+    $controller->index();
     exit;
 }
