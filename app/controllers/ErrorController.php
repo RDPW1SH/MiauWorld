@@ -1,9 +1,8 @@
 <?php
-class ErrorController {
-    public function index() {
-        
-        
+class ErrorController
+{
+    public function index()
+    {
         require_once './app/views/errors/not-found.php';
     }
 }
-?>

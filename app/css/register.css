@@ -3,15 +3,27 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100vw;
     height: 100vh;
+
 }
+
 .container {
     width: 100%;
     height: 100%;
+    background-image: url('https://cdn12.picryl.com/photo/2016/12/31/cat-tomcat-kitten-animals-436994-1024.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.opaco {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: blue;
 }
+
 .login-card {
     background-color: white;
     min-width: 380px;
@@ -26,33 +38,56 @@ body {
     padding: 20px;
     justify-content: space-around;
 }
+
 .links {
     text-align: center;
 }
+
 input {
     padding: 8px 12px;
 }
+
 a {
     text-decoration: none;
-    color: green;
+    color: rgb(252, 154, 75);
 }
+
+a:hover {
+    color: orange;
+}
+
 h1 {
+    font-size: 36x;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h1,
+h2 {
+    margin: 0;
     text-align: center;
 }
+
 .placement {
     text-align: center;
 }
+
 .auth-btn {
     width: 80%;
     font-weight: 600;
+    color: white;
     padding: 10px;
     font-size: large;
-    background-color: orange;
+    background-color: #f4a261;
     text-align: center;
     border: none;
     cursor: pointer;
     border-radius: 10px;
 }
+
 .auth-btn:hover {
-    background-color: orangered;
+    background-color: rgb(252, 154, 75);
 }
