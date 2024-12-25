@@ -47,7 +47,9 @@ if (isset($_POST['auth-btn'])) {
     <main class="container">
         <div class="opaco">
             <form class="login-card" action="" method="post">
-                <h1>😺 MiauWorld</h1>
+                <a class="title" href="/">
+                    <h1>😺 MiauWorld</h1>
+                </a>
                 <h2>Register</h2>
                 <label for="email">Email</label>
                 <input type="email" name="email" placeholder="Insira um email válido" required>
@@ -56,7 +58,7 @@ if (isset($_POST['auth-btn'])) {
                 <label for="password">Repetir password</label>
                 <input type="password" name="repeatPassword" placeholder="Repita a password" required>
                 <div class="links">
-                    <p>Tem conta? tente fazer <a href="/auth/login">Login</a></p>
+                    <p>Tem conta? tente fazer <a class="link" href="/auth/login">Login</a></p>
                 </div>
                 <div class="placement">
                     <button class="auth-btn" type="submit">Register</button>

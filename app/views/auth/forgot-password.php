@@ -44,7 +44,9 @@ if (isset($_POST['auth-btn'])) {
     <main class="container">
         <div class="opaco">
             <form class="login-card" action="" method="post">
-                <h1>😺 MiauWorld</h1>
+                <a class="title" href="/">
+                    <h1>😺 MiauWorld</h1>
+                </a>
                 <div>
                     <h2>Esqueçeu-se da sua passe?</h2>
                     <p>diga-nos o seu email e nós enviaremos um email de recuperação</p>
@@ -52,7 +54,7 @@ if (isset($_POST['auth-btn'])) {
 
                 <input type="email" name="email" placeholder="Escreva o seu email" required>
                 <div class="links">
-                    <p>Lembrou-se da sua passe? tente fazer <a href="/auth/login">Login</a></p>
+                    <p>Lembrou-se da sua passe? tente fazer <a class="link" href="/auth/login">Login</a></p>
                 </div>
                 <div class="placement">
                     <button class="auth-btn" type="submit">Receber email</button>
