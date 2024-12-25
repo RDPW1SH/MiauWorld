@@ -42,7 +42,7 @@ if (isset($_POST['auth-btn'])) {
             <label for="password">Password</label>
             <input type="password" name="password" placeholder="Escreva a sua password" required>
             <div class="links">
-                <p>Não tem conta? <a href="./register.php">Registe-se</a></p>
+                <p>Não tem conta? <a href="/auth/register">Registe-se</a></p>
             </div>
             <div class="placement">
                 <button class="auth-btn" type="submit">Login</button>

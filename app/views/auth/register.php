@@ -56,7 +56,7 @@ if (isset($_POST['auth-btn'])) {
                 <label for="password">Repetir password</label>
                 <input type="password" name="repeatPassword" placeholder="Repita a password" required>
                 <div class="links">
-                    <p>Tem conta? tente fazer <a href="./login.php">Login</a></p>
+                    <p>Tem conta? tente fazer <a href="/auth/login">Login</a></p>
                 </div>
                 <div class="placement">
                     <button class="auth-btn" type="submit">Register</button>

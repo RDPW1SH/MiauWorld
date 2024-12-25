@@ -52,7 +52,7 @@ if (isset($_POST['auth-btn'])) {
 
                 <input type="email" name="email" placeholder="Escreva o seu email" required>
                 <div class="links">
-                    <p>Lembrou-se da sua passe? tente fazer <a href="./login.php">Login</a></p>
+                    <p>Lembrou-se da sua passe? tente fazer <a href="/auth/login">Login</a></p>
                 </div>
                 <div class="placement">
                     <button class="auth-btn" type="submit">Receber email</button>
