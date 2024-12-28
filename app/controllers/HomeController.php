@@ -17,7 +17,7 @@ class HomeController
         $homeData = $this->homeModel->getCats($endpoint);
 
         if (isset($homeData['error'])) {
-            echo ('Erro ao buscar dados: ' . $homeData['error']);
+            // echo ('Erro ao buscar dados: ' . $homeData['error']);
             $errorMessage = $homeData['error'];
             $homeData = [];
         } else {

@@ -7,7 +7,7 @@ class HomeModel
     public function getCats($endpoint)
     {
 
-        echo ('URL gerada: ' . $endpoint);
+        // echo ('URL gerada: ' . $endpoint);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $endpoint);
