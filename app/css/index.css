@@ -30,3 +30,16 @@ body, html {
         align-items: center;
         gap: 15px;
     }
+
+    img {
+        max-width: 400px;
+        max-height: 290px;
+    }
+
+    .images-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 20px;
+    }

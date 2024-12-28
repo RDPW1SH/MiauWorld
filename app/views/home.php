@@ -16,11 +16,13 @@
             <h1>Gatos, gatos e gatos</h1>
             <h3>Uma galeria de mais de 1000 imagens que tu podes explorar livremente</h3>
         </div>
+        <?php error_log('Resposta da API: ' . print_r($homeData, true)); ?>
+
         <div class="images-container">
             <?php if (!empty($homeData)): ?>
                 <?php foreach ($homeData as $image): ?>
                     <div class="images">
-                        <img src="<?= htmlspecialchars($image['url']) ?>" alt="">
+                        <img src="<?= htmlspecialchars('https://cataas.com/cat/' . $image['_id']) ?>" alt="">
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
