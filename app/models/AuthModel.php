@@ -20,6 +20,7 @@ class AuthModel
         $stmt->execute();
 
         $user = $stmt->fetch();
+
         if ($user) {
 
             if (password_verify($password, $user['password'])) {
@@ -33,7 +34,7 @@ class AuthModel
     }
 
     // Função Register
-    public function register($email, $password)
+    public function register($email, $password, $username)
     {
         // Verificar se o email já existe
         $query = "SELECT * FROM users WHERE email = :email";
@@ -44,14 +45,19 @@ class AuthModel
         if ($stmt->fetch()) {
             return false;
         } else {
+
+            $slug = strtolower($username);
             // Inserir novo usuário com password hash
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $insertQuery = "INSERT INTO users (email, password) VALUES (:email, :password)";
+            $insertQuery = "INSERT INTO users (nome, email, password, slug) VALUES (:nome, :email, :password, :slug)";
             $insertStmt = $this->db->prepare($insertQuery);
+            $insertStmt->bindParam(':usernane', $username);
             $insertStmt->bindParam(':email', $email);
             $insertStmt->bindParam(':password', $hashedPassword);
+            $insertStmt->bindParam(':slug', $slug);
 
-            return $insertStmt->execute(); // Retorna true em caso de sucesso
+
+            return $insertStmt->execute();
         }
     }
 
@@ -65,9 +71,9 @@ class AuthModel
 
         $user = $stmt->fetch();
         if ($user) {
-            return true; // Email existe
+            return true;
         } else {
-            return false; // Email não encontrado
+            return false;
         }
     }
 }

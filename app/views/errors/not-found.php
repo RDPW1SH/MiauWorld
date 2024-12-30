@@ -16,7 +16,7 @@
     <?php include './app/shared/components/nav/navbar.php'; ?>
 
     <h1>Não conseguimos encontrar a página que procura</h1>
-    <form action="home.php" method="POST">
+    <form action="/" method="POST">
         <button type="submit" name="redirect">Voltar à página inicial</button>
     </form>
     <?php include './app/shared/components/footer/footer.php'; ?>

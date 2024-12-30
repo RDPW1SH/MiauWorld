@@ -26,5 +26,9 @@ return [
         'controller' => 'PesquisaController',
         'action' => 'index'
     ],
+    'image/{id}' => [
+        'controller' => 'ImageController',
+        'action' => 'view'
+    ],
 ]
 ?>

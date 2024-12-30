@@ -1,9 +1,12 @@
 <?php
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1);
+session_start();
 
 if (isset($_SESSION['auth']) && !empty($_SESSION['auth'])) {
 
     http_response_code(300);
-    header('Location: ../home.php');
+    header('Location: /');
 }
 
 if (isset($_POST['auth-btn'])) {
@@ -24,7 +27,7 @@ if (isset($_POST['auth-btn'])) {
 
 
         http_response_code(300);
-        header('Location: ../home.php');
+        header('Location: /');
     }
 }
 ?>

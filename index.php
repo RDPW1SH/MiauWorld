@@ -7,27 +7,35 @@ $routes = require_once './app/routes/routes.php';
 
 $route = trim($path, '/');
 
-// Roteamento MVC
-if (array_key_exists($route, $routes)) {
+// Verificar se a rota é exata ou contém parâmetros dinâmicos
+foreach ($routes as $key => $routeDetails) {
 
+    // Substituir "{param}" por um padrão que captura o valor
 
-    $controllerName = $routes[$route]['controller'];
-    $actionName = $routes[$route]['action'];
+    $pattern = preg_replace('/{[a-zA-Z_]+}/', '([^/]+)', $key);
+    $pattern = '/^' . str_replace('/', '\/', $pattern) . '$/';
 
+    if (preg_match($pattern, $route, $matches)) {
+        // Identificar o controlador e ação
+        $controllerName = $routeDetails['controller'];
+        $actionName = $routeDetails['action'];
 
-    //var_dump($controllerName);
-    //var_dump($actionName);
+        // Capturar os parâmetros dinâmicos (se existirem)
+        array_shift($matches); // Remove o match completo
+        $params = $matches;
 
-    require_once './app/controllers/' . $controllerName . '.php';
+        require_once './app/controllers/' . $controllerName . '.php';
+        $controller = new $controllerName();
 
-    $controller = new $controllerName;
-    $controller->$actionName();
-    exit;
-} else {
-    http_response_code(404);
-
-    require_once './app/controllers/ErrorController.php';
-    $controller = new ErrorController();
-    $controller->index();
-    exit;
+        // Chamar a ação passando os parâmetros
+        call_user_func_array([$controller, $actionName], $params);
+        exit;
+    }
 }
+
+// Rota não encontrada
+http_response_code(404);
+require_once './app/controllers/ErrorController.php';
+$controller = new ErrorController();
+$controller->index();
+exit;

@@ -11,15 +11,13 @@
             </a>
             <p>MiauWorld</p>
         </div>
-        <form action='/auth/login' method='POST'>
-            <div style='display: flex; gap: 10px; align-items: center;'>
-                <?php if (isset($_SESSION['auth']) && !empty($_SESSION['auth'])) {
-                    echo ("<a href='./user/profile.php'>Bem Vindo</button>");
-                } else {
-                    echo ("<button type='submit' class='auth-btn'>Login</button>");
-                } ?>
-            </div>
-        </form>
+        <div style='display: flex; gap: 10px; align-items: center;'>
+            <?php if (isset($_SESSION['auth']) && !empty($_SESSION['auth'])) {
+                echo ("<a href='/user'>Bem Vindo</a>");
+            } else {
+                echo ("<button class='auth-btn'><a href='/auth/login'>Login</a></button>");
+            } ?>
+        </div>
     </div>
     <style>
         * {
@@ -29,6 +27,11 @@
         nav {
             padding: 20px 15px;
             background-color: #32373b;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
         }
 
         .logo {
@@ -82,6 +85,10 @@
             background-color: #4a5859;
             color: white;
             border: 2px solid white;
+        }
+
+        .auth-btn:hover a {
+            color: white;
         }
     </style>
 </nav>

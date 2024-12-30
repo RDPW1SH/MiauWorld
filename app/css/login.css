@@ -72,7 +72,10 @@ h2 {
 .placement {
     text-align: center;
 }
-
+.error {
+    color: red;
+    text-align: center;
+}
 .auth-btn {
     width: 80%;
     font-weight: 600;
