@@ -1,12 +1,40 @@
 <?php
+
 session_start();
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $segments = explode('/', trim($path, '/'));
 $id = end($segments);
+$basePhotoPath = 'https://cataas.com/cat/' . $id;
 
-// var_dump($id);
+$textColor = $_POST['text-color'] ?? 'black';
+$textContent = $_POST['text-content'] ?? '';
+$textSize = $_POST['text-size'] ?? '30';
 
+if (isset($_POST['previewImageBtn'])) {
+    if (!empty($textContent)) {
+        $editedPhotoPath = $basePhotoPath . '/says/' . urlencode($textContent) .
+            '?fontColor=' . urlencode($textColor) .
+            '&fontSize=' . urlencode($textSize);
+
+        // var_dump($editedPhotoPath);
+    } else {
+        $editedPhotoPath = $basePhotoPath;
+    }
+}
+
+if (isset($_POST['saveImgBtn']) && isset($editedPhotoPath)) {
+    // Fazer o download da imagem
+    // var_dump($editedPhotoPath);
+
+    /*
+    $imageContent = file_get_contents($editedPhotoPath);
+    $fileName = 'edited_image_' . $id . '.jpg';
+
+    header('Content-Type: image/jpeg');
+    header('Content-Disposition: attachment; filename="' . $fileName . '"');
+    exit;*/
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +54,11 @@ $id = end($segments);
     <div class="container">
         <h1>Edite esta imagem</h1>
         <div class="images">
-            <img src="<?= htmlspecialchars('https://cataas.com/cat/' . $id) ?>" alt="">
+            <?php if (isset($editedPhotoPath) && !empty($editedPhotoPath)): ?>
+                <img src="<?= htmlspecialchars($editedPhotoPath) ?>" alt="">
+            <?php else: ?>
+                <img src="<?= htmlspecialchars($basePhotoPath) ?>" alt="">
+            <?php endif; ?>
         </div>
     </div>
 
@@ -35,21 +67,38 @@ $id = end($segments);
         <form action="" method="post">
             <div class="input-div">
                 <label for="color">Cor do texto</label>
-                <input type="color" name="text-color" value="#f0f0f0">
+                <select name="text-color" required>
+                    <option value="black" <?= $textColor === 'black' ? 'selected' : '' ?>>Preto</option>
+                    <option value="white" <?= $textColor === 'white' ? 'selected' : '' ?>>Branco</option>
+                    <option value="red" <?= $textColor === 'red' ? 'selected' : '' ?>>Vermelho</option>
+                    <option value="blue" <?= $textColor === 'blue' ? 'selected' : '' ?>>Azul</option>
+                    <option value="green" <?= $textColor === 'green' ? 'selected' : '' ?>>Verde</option>
+                    <option value="yellow" <?= $textColor === 'yellow' ? 'selected' : '' ?>>Amarelo</option>
+                    <option value="purple" <?= $textColor === 'purple' ? 'selected' : '' ?>>Roxo</option>
+                    <option value="orange" <?= $textColor === 'orange' ? 'selected' : '' ?>>Laranja</option>
+                    <option value="gray" <?= $textColor === 'gray' ? 'selected' : '' ?>>Cinza</option>
+                </select>
             </div>
 
             <div class="input-div">
                 <label for="texto">Texto na imagem</label>
-                <input type="text" name="text-content" placeholder="Escreva o texto que que deve apareçer na imagem" required>
-            </div>
-            <div class="btns-div">
-                <button class="previewBtn" name="previewImageBtn">
-                    Preview da imagem
-                </button>
-                <button class="saveImgBtn" name="saveImgBtn">Salvar imagem</button>
+                <input type="text" name="text-content" placeholder="Escreva o texto que deve aparecer na imagem"
+                    value="<?= htmlspecialchars($textContent) ?>">
             </div>
 
+            <div class="input-div">
+                <label for="tamano">Tamanho do texto</label>
+                <input type="number" name="text-size" placeholder="Escreva o texto que deve aparecer na imagem"
+                    min="1" max="200" value="<?= htmlspecialchars($textSize) ?>">
+            </div>
+
+            <div class="btns-div">
+                <button class="previewBtn" name="previewImageBtn">Preview da imagem</button>
+                <button class="saveImgBtn" name="saveImgBtn">Salvar imagem</button>
+                <button class="removeEdit" name="removeEdit">Limpar edição</button>
+            </div>
         </form>
+
     </div>
 
     <?php include './app/shared/components/footer/footer.php'; ?>
@@ -82,7 +131,6 @@ $id = end($segments);
     img {
         max-width: 600px;
         max-height: 410px;
-
     }
 
     .edit-container {
@@ -101,13 +149,9 @@ $id = end($segments);
         gap: 15px;
     }
 
-    input[type=color] {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        background-color: white;
+    select {
+        padding: 5px;
+        font-size: 16px;
     }
 
     input[type=text] {
@@ -119,8 +163,12 @@ $id = end($segments);
         outline: none;
     }
 
-    .previewBtn,
-    .saveImgBtn {
+    .btns-div {
+        display: flex;
+        gap: 15px;
+    }
+
+    .btns-div button {
         max-width: 150px;
         width: auto;
         padding: 10px;
@@ -131,11 +179,9 @@ $id = end($segments);
         cursor: pointer;
     }
 
-    .previewBtn:hover,
-    .saveImgBtn:hover {
+    .btns-div button:hover {
         background-color: rgb(255, 150, 64);
         border: 2px solid grey;
-
     }
 </style>
 
