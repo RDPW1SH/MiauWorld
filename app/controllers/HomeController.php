@@ -12,7 +12,9 @@ class HomeController
 
         $this->homeModel = new HomeModel();
 
-        $endpoint = 'https://cataas.com/api/cats?limit=5&skip=10';
+        $rand = rand(1, 1906);
+        $var_dump($rand);
+        $endpoint = 'https://cataas.com/api/cats?limit=10&skip=' . $rand;
 
         $homeData = $this->homeModel->getCats($endpoint);
 

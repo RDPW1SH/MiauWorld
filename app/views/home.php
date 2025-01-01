@@ -18,21 +18,24 @@
         </div>
         <?php error_log('Resposta da API: ' . print_r($homeData, true)); ?>
 
-        <form action="" method="get">
-            <div class="images-container">
-                <?php if (!empty($homeData)): ?>
-                    <?php foreach ($homeData as $image): ?>
-                        <div class="images">
-                            <a href="/image/<?= urlencode($image['_id']) ?>">
-                                <img src="<?= htmlspecialchars('https://cataas.com/cat/' . $image['_id']) ?>" alt="">
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>Não encontramos fotos para lhe mostrar.</p>
-                <?php endif; ?>
-            </div>
-        </form>
+
+        <div class="images-container">
+            <?php if (!empty($homeData)): ?>
+                <?php foreach ($homeData as $image): ?>
+                    <div class="images">
+                        <a href="/image/<?= urlencode($image['_id']) ?>">
+                            <img src="<?= htmlspecialchars('https://cataas.com/cat/' . $image['_id']) ?>" alt="">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Não encontramos fotos para lhe mostrar.</p>
+            <?php endif; ?>
+        </div>
+        <div class="images-container-category">
+            <h1>Gatos laranja</h1>
+        </div>
+
     </div>
 
     <?php include './app/shared/components/footer/footer.php'; ?>
@@ -93,6 +96,12 @@
         align-items: center;
         justify-content: space-evenly;
         gap: 20px;
+    }
+
+    .images-container-category {
+        text-align: center;
+        font-size: 28px;
+        margin-top: 10px;
     }
 </style>
 

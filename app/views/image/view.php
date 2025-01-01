@@ -10,30 +10,44 @@ $basePhotoPath = 'https://cataas.com/cat/' . $id;
 $textColor = $_POST['text-color'] ?? 'black';
 $textContent = $_POST['text-content'] ?? '';
 $textSize = $_POST['text-size'] ?? '30';
+$imageFilter = $_POST['image-filter'] ?? '';
 
 if (isset($_POST['previewImageBtn'])) {
-    if (!empty($textContent)) {
-        $editedPhotoPath = $basePhotoPath . '/says/' . urlencode($textContent) .
+
+
+    if (!empty($textContent) && !empty($imageFilter)) {
+        $editedPhotoPath = $basePhotoPath . '/says/' . ($textContent) .
+            '?fontColor=' . urlencode($textColor) .
+            '&fontSize=' . urlencode($textSize) .
+            '&filter=' . urlencode($imageFilter);
+    } else if (!empty($textContent) && empty($imageFilter)) {
+        $editedPhotoPath = $basePhotoPath . '/says/' . ($textContent) .
             '?fontColor=' . urlencode($textColor) .
             '&fontSize=' . urlencode($textSize);
-
-        // var_dump($editedPhotoPath);
+    } else if (empty($textContent) && !empty($imageFilter)) {
+        $editedPhotoPath = $basePhotoPath .
+            '?filter=' . urlencode($imageFilter);
     } else {
         $editedPhotoPath = $basePhotoPath;
     }
+    // var_dump($editedPhotoPath);
 }
 
-if (isset($_POST['saveImgBtn']) && isset($editedPhotoPath)) {
+if (isset($_POST['saveImgBtn'])) {
+
     // Fazer o download da imagem
     // var_dump($editedPhotoPath);
 
-    /*
-    $imageContent = file_get_contents($editedPhotoPath);
-    $fileName = 'edited_image_' . $id . '.jpg';
+    if (isset($editedPhotoPath) && !empty($editedPhotoPath)) {
+        $imageContent = file_get_contents($editedPhotoPath);
+    } else {
+        $imageContent = file_get_contents($basePhotoPath);
+    }
 
+    $fileName = 'edited_image_' . $id . '.jpg';
     header('Content-Type: image/jpeg');
     header('Content-Disposition: attachment; filename="' . $fileName . '"');
-    exit;*/
+    exit;
 }
 ?>
 
@@ -88,8 +102,18 @@ if (isset($_POST['saveImgBtn']) && isset($editedPhotoPath)) {
 
             <div class="input-div">
                 <label for="tamano">Tamanho do texto</label>
-                <input type="number" name="text-size" placeholder="Escreva o texto que deve aparecer na imagem"
+                <input type="number" name="text-size"
                     min="1" max="200" value="<?= htmlspecialchars($textSize) ?>">
+            </div>
+
+            <div class="input-div">
+                <label for="filter">Filtro da imagem</label>
+                <select name="image-filter">
+                    <option value="" <?= $imageFilter === '' ? 'selected' : '' ?>>Nenhum</option>
+                    <option value="mono" <?= $imageFilter === 'mono' ? 'selected' : '' ?>>Preto & branco</option>
+                    <option value="negate" <?= $imageFilter === 'negate' ? 'selected' : '' ?>>Negate</option>
+                </select>
+
             </div>
 
             <div class="btns-div">
@@ -135,6 +159,10 @@ if (isset($_POST['saveImgBtn']) && isset($editedPhotoPath)) {
 
     .edit-container {
         padding: 15px 25px;
+    }
+
+    .edit-container h1 {
+        margin-bottom: 10px;
     }
 
     .edit-container form {
