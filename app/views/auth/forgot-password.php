@@ -38,7 +38,7 @@ if (isset($_POST['auth-btn'])) {
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href='./app/css/forgot-password.css'>
+    <link rel="stylesheet" href='/app/css/forgot-password.css'>
     <title>MiauWorld - Forgot Password</title>
 </head>
 
