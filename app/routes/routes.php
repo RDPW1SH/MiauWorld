@@ -30,5 +30,9 @@ return [
         'controller' => 'ImageController',
         'action' => 'view'
     ],
+    'user/{id}' => [
+        'controller' => 'UserController',
+        'action' => 'index'
+    ],
 ]
 ?>
