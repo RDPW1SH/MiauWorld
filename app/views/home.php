@@ -1,5 +1,35 @@
 <?php
 session_start();
+
+if (isset($_POST['wishlist-btn'])) {
+
+    if (isset($_POST['cat_id']) && !empty($_POST['cat_id'])) {
+
+        $userId = $_SESSION['account_id'] ?? null;
+        $catId = htmlspecialchars($_POST['cat_id']);
+
+        if ($userId) {
+            try {
+                // Instância do modelo HomeModel
+                require_once './app/models/HomeModel.php';
+                require_once './database/connection.php';
+
+                $db = Connection::getInstance();
+                $homeModel = new HomeModel($db);
+
+                $homeModel->setLikes($userId, $catId);
+                exit;
+            } catch (Exception $e) {
+                error_log("Erro ao adicionar à lista de desejos: " . $e->getMessage());
+                echo "Erro ao processar a solicitação.";
+            }
+        } else {
+            header('Location: /auth/login');
+        }
+    } else {
+        // echo "ID do gato não enviado.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +68,7 @@ session_start();
                         </a>
                         <form method="post" action="/" class="wishlist-form">
                             <input type="hidden" name="cat_id" value="<?= htmlspecialchars($catId) ?>">
-                            <button type="submit" class="wishlist-btn">
+                            <button type="submit" name="wishlist-btn" class="wishlist-btn">
                                 <?php if ($isLiked): ?>
                                     <i class="fa-solid fa-heart"></i> <!-- Ícone de coração cheio -->
                                 <?php else: ?>

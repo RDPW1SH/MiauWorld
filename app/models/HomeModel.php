@@ -55,4 +55,17 @@ class HomeModel
             return [];
         }
     }
+    public function setLikes($userId, $catId)
+    {
+        try {
+            $query = "INSERT INTO wishlist (user_id, cat_id) VALUES (:user_id, :cat_id)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+            $stmt->bindParam(':cat_id', $catId, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (Exception $e) {
+            // error_log("Erro ao adicionar like: " . $e->getMessage());
+            throw new Exception("Erro ao adicionar à lista de desejos.");
+        }
+    }
 }
