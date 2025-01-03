@@ -1,9 +1,16 @@
 <?php
 
-
+require_once './database/connection.php';
 
 class HomeModel
 {
+
+    private $db;
+
+    public function __construct($db)
+    {
+        $this->db = $db;
+    }
     public function getCats($endpoint)
     {
 
@@ -28,5 +35,24 @@ class HomeModel
 
         curl_close($ch);
         return json_decode($response, true);
+    }
+    public function getLikes($userId)
+    {
+        try {
+            $query = "SELECT cat_id FROM wishlist WHERE user_id = :user_id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $likes = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $likes[] = $row['cat_id'];
+            }
+
+            return $likes;
+        } catch (Exception $e) {
+            error_log('Erro ao buscar likes: ' . $e->getMessage());
+            return [];
+        }
     }
 }

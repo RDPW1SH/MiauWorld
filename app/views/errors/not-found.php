@@ -15,10 +15,13 @@
 <body>
     <?php include './app/shared/components/nav/navbar.php'; ?>
 
-    <h1>Não conseguimos encontrar a página que procura</h1>
-    <form action="/" method="POST">
-        <button type="submit" name="redirect">Voltar à página inicial</button>
-    </form>
+    <div class="container">
+        <h1>Não conseguimos encontrar a página que procura</h1>
+        <form action="/" method="POST">
+            <button type="submit" name="redirect">Voltar à página inicial</button>
+        </form>
+    </div>
+
     <?php include './app/shared/components/footer/footer.php'; ?>
 </body>
 <style>
