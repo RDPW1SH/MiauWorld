@@ -49,9 +49,9 @@ class AuthModel
             $slug = strtolower($username);
             // Inserir novo usuário com password hash
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $insertQuery = "INSERT INTO users (nome, email, password, slug) VALUES (:nome, :email, :password, :slug)";
+            $insertQuery = "INSERT INTO users (username, email, password, slug) VALUES (:username, :email, :password, :slug)";
             $insertStmt = $this->db->prepare($insertQuery);
-            $insertStmt->bindParam(':usernane', $username);
+            $insertStmt->bindParam(':username', $username);
             $insertStmt->bindParam(':email', $email);
             $insertStmt->bindParam(':password', $hashedPassword);
             $insertStmt->bindParam(':slug', $slug);

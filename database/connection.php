@@ -11,7 +11,7 @@ class Connection
         if (self::$instance === null) {
             try {
                 self::$instance = new PDO(
-                    dsn: "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";port=3306;charset=utf8mb4",
+                    dsn: "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";port=3306;",
                     username: DB_USER,
                     password: DB_PASS,
                     options: [

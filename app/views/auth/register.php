@@ -16,10 +16,12 @@ if (isset($_POST['auth-btn'])) {
     $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
     $repeatPassword = htmlspecialchars($_POST['repeatPassword'], ENT_QUOTES, 'UTF-8');
 
+    if (!$email) {
+        $error = "Email inválido.";
+    }
 
     if ($password !== $repeatPassword) {
-        $error = "As passwords não são iguais";
-        exit;
+        $error = "As passwords não são iguais.";
     }
 
     require_once './app/models/AuthModel.php';
@@ -31,7 +33,7 @@ if (isset($_POST['auth-btn'])) {
         $_SESSION['auth'] = true;
         $_SESSION['account_username'] = $user['nome'];
         $_SESSION['account_id'] = $user['id'];
-        redirectToHome();
+        header('Location: /auth/login');
         exit;
     } else {
 
@@ -39,13 +41,6 @@ if (isset($_POST['auth-btn'])) {
     }
 }
 
-function redirectToHome()
-{
-    require_once './app/controllers/HomeController.php';
-    $controller = new HomeController();
-    $controller->index();
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +50,7 @@ function redirectToHome()
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href='/app//css/register.css'>
-    <title>MiauWorld - Register</title>
+    <title>MiauWorld r</title>
 </head>
 
 
@@ -64,7 +59,7 @@ function redirectToHome()
         <div class="opaco">
             <form class="login-card" action="" method="post">
                 <a class="title" href="/">
-                    <h1>😺 MiauWorld</h1>
+                    <h1></h1>
                 </a>
                 <h2>Register</h2>
                 <label for="nome">Nome</label>
@@ -82,7 +77,7 @@ function redirectToHome()
                     <button class="auth-btn" name="auth-btn" type="submit">Register</button>
                 </div>
                 <div class="error">
-                    <?php if (isset($error)) echo $error; ?>
+                    <?php if (isset($error)) echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
                 </div>
             </form>
         </div>
