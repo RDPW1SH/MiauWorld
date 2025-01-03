@@ -59,5 +59,92 @@ session_start();
     <?php include './app/shared/components/footer/footer.php'; ?>
 
 </body>
+<style>
+    body,
+    html {
+        margin: 0;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .container {
+        padding: 15px 25px;
+        background-color: rgb(250, 252, 255);
+        flex-grow: 1;
+    }
+
+    .website-desc {
+        padding-bottom: 25px;
+    }
+
+    h1,
+    h3 {
+        margin: 0;
+    }
+
+    .website-desc h1 {
+        font-size: 36px;
+        font-weight: 600;
+        color: rgb(29, 29, 29);
+    }
+
+    .website-desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    img {
+        max-width: 400px;
+        max-height: 290px;
+
+    }
+
+    img:hover {
+        cursor: pointer;
+    }
+
+    .images-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 20px;
+    }
+
+    .images-container-category {
+        text-align: center;
+        font-size: 28px;
+        margin-top: 10px;
+    }
+
+    .images {
+        position: relative;
+    }
+
+    .images form {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+
+    .wishlist-btn {
+
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        color: red;
+        margin-top: 8px;
+    }
+
+    .wishlist-btn:hover {
+        color: darkred;
+    }
+</style>
 
 </html>
