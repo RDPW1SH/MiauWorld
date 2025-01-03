@@ -30,7 +30,7 @@ return [
         'controller' => 'ImageController',
         'action' => 'view'
     ],
-    'user/{id}' => [
+    'user/{slug}' => [
         'controller' => 'UserController',
         'action' => 'index'
     ],

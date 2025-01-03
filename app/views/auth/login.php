@@ -30,6 +30,7 @@ if (isset($_POST['auth-btn'])) {
 
         $_SESSION['auth'] = true;
         $_SESSION['account_username'] = $user['username'];
+        $_SESSION['account_slug'] = $user['slug'];
         $_SESSION['account_id'] = $user['id'];
         redirectToHome();
         exit;
