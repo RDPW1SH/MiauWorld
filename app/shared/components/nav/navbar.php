@@ -12,7 +12,7 @@ session_start();
         </div>
         <div style='display: flex; gap: 10px; align-items: center;'>
             <?php if (isset($_SESSION['auth']) && !empty($_SESSION['auth'])) {
-                echo "<a href='/user/{$_SESSION['account_slug']}'>Bem Vindo {$_SESSION['account_username']}</a>";
+                echo "<a href='/user/{$_SESSION['account_slug']}'>Bem Vindo, <strong>{$_SESSION['account_username']}</strong></a>";
             } else {
                 echo ("<button class='auth-btn'><a href='/auth/login'>Login</a></button>");
             } ?>

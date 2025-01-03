@@ -18,6 +18,7 @@ if (isset($_POST['wishlist-btn'])) {
                 $homeModel = new HomeModel($db);
 
                 $homeModel->setLikes($userId, $catId);
+                header('Location: /');
                 exit;
             } catch (Exception $e) {
                 error_log("Erro ao adicionar à lista de desejos: " . $e->getMessage());
