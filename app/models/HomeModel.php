@@ -55,9 +55,15 @@ class HomeModel
             return [];
         }
     }
-    public function setLikes($userId, $catId)
+    public function setLikes($userId, $catId, $isLiked)
     {
         try {
+
+            if (!$isLiked) {
+                $query = "INSERT INTO wishlist (user_id, cat_id) VALUES (:user_id, :cat_id)";
+            } else {
+                $query = "DELETE FROM wishlist WHERE user_id = :user_id AND cat_id = :cat_id";
+            }
             $query = "INSERT INTO wishlist (user_id, cat_id) VALUES (:user_id, :cat_id)";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);

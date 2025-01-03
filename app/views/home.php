@@ -17,7 +17,7 @@ if (isset($_POST['wishlist-btn'])) {
                 $db = Connection::getInstance();
                 $homeModel = new HomeModel($db);
 
-                $homeModel->setLikes($userId, $catId);
+                $homeModel->setLikes($userId, $catId, $isLiked);
                 header('Location: /');
                 exit;
             } catch (Exception $e) {
@@ -69,6 +69,7 @@ if (isset($_POST['wishlist-btn'])) {
                         </a>
                         <form method="post" action="/" class="wishlist-form">
                             <input type="hidden" name="cat_id" value="<?= htmlspecialchars($catId) ?>">
+                            <input type="hidden" name="liked" value="<?= $isLiked ?>">
                             <button type="submit" name="wishlist-btn" class="wishlist-btn">
                                 <?php if ($isLiked): ?>
                                     <i class="fa-solid fa-heart"></i> <!-- Ícone de coração cheio -->
